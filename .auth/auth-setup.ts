@@ -21,7 +21,12 @@ async function browserAuthorize(config: FullConfig){
         }
     }
 
-    const browser = await chromium.launch({ headless: true });
+        const browser = await chromium.launch({
+     channel: 'chrome',
+     headless: true
+        });
+        console.log('Launching Google Chrome via Playwright');
+console.log('Chromium executable:', chromium.executablePath());
     const context = await browser.newContext();
     await context.addCookies(user.cookies)
     const page = await context.newPage();
